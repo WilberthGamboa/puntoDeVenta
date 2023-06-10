@@ -7,21 +7,8 @@ const Categories = sequelize.define('categories', {
       type: Sequelize.STRING,
       allowNull: false
     },
-    productName: {
-      type: Sequelize.STRING,
-      allowNull: false
-    },
-    price: {
-        type: Sequelize.DOUBLE,
-        allowNull: false
-    },
-    stock:{
-      type:Sequelize.INTEGER,
-      allowNull: false
-    }
-    
   });
 
-  Categories.hasOne(Products)
+  Categories.hasOne(Products, { foreignKey: { name: 'categoryId', allowNull: false } });
 
   module.exports = Categories;
