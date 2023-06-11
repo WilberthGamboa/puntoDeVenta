@@ -1,6 +1,13 @@
-import { contextBridge } from 'electron'
+import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
 
+
+
+contextBridge.exposeInMainWorld('categoryEvent',{
+  postCategory: (data) => ipcRenderer.invoke('postCategory',data) 
+})
+
+/*
 // Custom APIs for renderer
 const api = {}
 
@@ -18,3 +25,4 @@ if (process.contextIsolated) {
   window.electron = electronAPI
   window.api = api
 }
+*/

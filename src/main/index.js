@@ -3,7 +3,10 @@ import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import { initDb } from './db/database'
-
+import CategoriesController from './categories/controller/categories.controller'
+//const defineRelationships = require(__dirname,'./db/relation')
+//! Instancian los controllers
+const categoriesController = new CategoriesController();
 
 
 function createWindow() {
@@ -44,9 +47,12 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
+// ! CUANDO LA APP LISTA
 app.whenReady().then(() => {
-
   initDb();
+  //defineRelationships;
+  ipcMain.handle('postCategory',categoriesController.postCategory);
+
   // Set app user model id for windows
   electronApp.setAppUserModelId('com.electron')
 

@@ -1,7 +1,9 @@
 import { Categories } from "../model/categories.model";
 
 
-class CategoriesService{
+
+
+export default class CategoriesService{
     constructor(){
         
 
@@ -23,6 +25,7 @@ class CategoriesService{
 
         try {
             const category = await Categories.create(dataDto);
+            console.log(category)
             return category;
           } catch (error) {
             console.error('Error al crear la categoría:', error);
