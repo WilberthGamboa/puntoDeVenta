@@ -2,6 +2,7 @@
   //import { sequelize } from "../db/database";
   //import { Products } from "../../products/model/products.model";
   import { sequelize } from "../../db/database";
+import { Products } from "../../products/model/products.model";
 
 
 
@@ -11,6 +12,6 @@
         allowNull: false
       },
     });
-
+   // Products.belongsTo(Categories); 
 
 

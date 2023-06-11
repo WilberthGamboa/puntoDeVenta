@@ -4,7 +4,8 @@ import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import { initDb } from './db/database'
 import CategoriesController from './categories/controller/categories.controller'
-//const defineRelationships = require(__dirname,'./db/relation')
+import { defineRelationships } from './db/relation'
+
 //! Instancian los controllers
 const categoriesController = new CategoriesController();
 
@@ -50,7 +51,8 @@ function createWindow() {
 // ! CUANDO LA APP LISTA
 app.whenReady().then(() => {
   initDb();
-  //defineRelationships;
+  defineRelationships();
+  
   ipcMain.handle('postCategory',categoriesController.postCategory);
 
   // Set app user model id for windows
